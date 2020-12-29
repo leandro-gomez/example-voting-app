@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo 'Running tests'
                 dir('worker') {
-                    sh 'mvn clean test
+                    sh 'mvn clean test'
                 }
             }
         }
