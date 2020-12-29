@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    node {
+        env.NODEJS_HOME = "${tool 'Node 6.x'}"
+        env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
+        sh 'npm --version'
+    }
+    stages {
+        stage('build') {
+            when {
+                changeset '**/result/**'
+            }
+            steps {
+                echo 'Compiling result app'
+                dir('result') {
+                    sh 'npm install'
+                }
+            }
+        }
+        stage('test') {
+            when {
+                changeset '**/result/**'
+            }
+            steps {
+                echo 'Running tests'
+                dir('worker') {
+                    sh 'npm install'
+                    sh 'npm test'
+                }
+            }
+        }
+    }
+    
+    post {
+        always{
+            echo "Finished!"
+        }
+    }
+}
+
