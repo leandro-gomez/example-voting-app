@@ -22,7 +22,7 @@ pipeline {
             }
             steps {
                 echo 'Running tests'
-                dir('worker') {
+                dir('result') {
                     sh 'npm install'
                     sh 'npm test'
                 }
