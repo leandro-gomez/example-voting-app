@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Running tests'
                 dir('vote') {
-                    sh '/root/.local/bin/nosetests -v'
+                    sh 'nosetests -v'
                 }
             }
         }
