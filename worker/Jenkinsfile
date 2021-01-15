@@ -38,7 +38,7 @@ pipeline {
             }
         }
         stage('docker-package') {
-            agent any
+            agent any // Work in jenkins host
             when {
                 changeset '**/worker/**'
             }
