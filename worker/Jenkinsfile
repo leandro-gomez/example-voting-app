@@ -41,6 +41,7 @@ pipeline {
             agent any // Work in jenkins host
             when {
                 changeset '**/worker/**'
+                branch 'master'
             }
             steps {
                 echo 'Packaging worker app with Docker'
