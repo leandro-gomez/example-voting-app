@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  vote:
+    image: lgomezdevartis/vote:master
+    build: ./vote
+    ports:
+      - 5000:80
+  result:
+    image: lgomezdevartis/result:master
+    build: ./result
+    ports:
+      - 5001:80
+  worker:
+    image: lgomezdevartis/worker:master
+    build: ./worker
+  redis:
+    image: redis:alpine
+  db:
+    image: postgres:9.4
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
