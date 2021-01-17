@@ -32,6 +32,7 @@ pipeline {
             steps {
                 echo 'Running tests'
                 dir('vote') {
+                    sh 'pip install --no-cache -r requirements.txt'
                     sh 'nosetests -v'
                 }
             }
